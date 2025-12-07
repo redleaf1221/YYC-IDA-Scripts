@@ -1,9 +1,8 @@
 from ida_domain import Database
-from ida_domain.types import TypeApplyFlags
 
 
 def name_func_var(name: str) -> str:
-    return f"?g_FUNC_{name}@@3UYYVAR@@A "
+    return f"?g_FUNC_{name.replace('@','_')}@@3UYYVAR@@A "
 
 
 def main():
@@ -23,7 +22,7 @@ def main():
         db.names.set_name(current_ea, "?g_Funcs@@3PAPEAUYYVAR@@A")
         while (var_ea := db.bytes.get_qword_at(current_ea)) != 0:
             var_name = name_func_var(db.bytes.get_cstring_at(db.bytes.get_qword_at(var_ea)))
-            db.types.apply_at(yyvar_type, var_ea, TypeApplyFlags.DEFINITE)
+            db.types.apply_at(yyvar_type, var_ea)
             db.names.set_name(var_ea, var_name)
             print(f"Func {var_name} at {hex(current_ea)} processed.")
             current_ea += 8

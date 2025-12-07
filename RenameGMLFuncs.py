@@ -1,5 +1,4 @@
 from ida_domain import Database
-from ida_domain.types import TypeApplyFlags
 from ida_typeinf import tinfo_t
 
 
@@ -26,7 +25,7 @@ def name_gml_func(demangled: str) -> str:
 
 
 def name_gml_func_var(name: str) -> str:
-    return f"?g_Script_{name}@@3UYYVAR@@A"
+    return f"?g_Script_{name.replace('@','_')}@@3UYYVAR@@A"
 
 
 def main():
@@ -54,11 +53,11 @@ def main():
             func_var_ea = db.bytes.get_qword_at(current_ea + 16)
 
             func_var_name = name_gml_func_var(db.bytes.get_cstring_at(db.bytes.get_qword_at(func_var_ea)))
-            db.types.apply_at(yyvar_type, func_var_ea, TypeApplyFlags.DEFINITE)
+            db.types.apply_at(yyvar_type, func_var_ea)
             db.names.set_name(func_var_ea, func_var_name)
 
             func_type = temp_global_func_type if is_global_func(name) else temp_object_func_type
-            db.types.apply_at(func_type, func.start_ea, TypeApplyFlags.DEFINITE)
+            db.types.apply_at(func_type, func.start_ea)
             db.functions.set_name(func, name_gml_func(name))
 
             print(f"GMLFunc {name} at {hex(current_ea)} processed.")

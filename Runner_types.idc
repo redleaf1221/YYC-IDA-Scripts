@@ -10326,7 +10326,7 @@ static LocalTypes_10()
   p_type = "\x1D\x11''";
   p_fields = "\x10PhysicalAddress\x0CVirtualSize";
   load_type(ltf, 2018, "$22971E98F1DCAE471B592EC18ECB1551", p_type, p_fields);
-  p_type = "\x0D\x19)\x07\x07";
+  p_type = "\x0D\x19)\x07=\x0ERValue_consts";
   p_fields = "\x04val\x06dummy\x05kind";
   load_type(ltf, 2019, "DValue", p_type, p_fields);
   p_type = "\x0D\xFF\xFF@\xF1\x80\x01";
@@ -10334,7 +10334,7 @@ static LocalTypes_10()
   p_type = "\x0D\x19\xF1\x80\x01\x0Ar\x07\x07";
   p_fields = "\x08m_thing\x0Bm_refCount\x07m_size";
   load_type(ltf, 2021, "_RefThing<char const *>", p_type, p_fields);
-  p_type = "\x0D\x19=\"$AC81BCAE62FBC5FC73BD2706857AD9CD''";
+  p_type = "\x0D\x19=\"$AC81BCAE62FBC5FC73BD2706857AD9CD'=\x0ERValue_consts";
   p_fields = "\x06___u0\x06flags\x05kind";
   load_type(ltf, 2022, "RValue", p_type, p_fields);
   p_type = "\x0DA\xF1\x84\x01\x0A\x0D\x01\x0DYYObjectBase\x0A=\x07RValue\x05\x07\x07"
@@ -10407,7 +10407,7 @@ static LocalTypes_10()
     "__vc_attributes::event_sourceAttribute::optimize_e\x08";
   p_fields = "\x05type\x09optimize\x09decorate";
   load_type(ltf, 2048, "__vc_attributes::event_sourceAttribute", p_type, p_fields);
-  p_type = "\x0D\x19\x05\x07\x07";
+  p_type = "\x0D\x19\x05\x07=\x0ERValue_consts";
   p_fields = "\x04val\x06dummy\x05kind";
   load_type(ltf, 2049, "DLValue", p_type, p_fields);
   p_type = "\x0D\xFF\xFF@\xF1\x80\x01";
@@ -12812,8 +12812,9 @@ static LocalTypes_12()
   load_type(ltf, 3069, "YYObjectBase", p_type);
   p_type = "\x0D\x01\x01";
   load_type(ltf, 3070, "StructVarsMap", p_type);
-  p_type = "\x0D\x01\x01";
-  load_type(ltf, 3071, "CInstance", p_type);
+  p_type = "\x0D\x09\xF1\x80\x01=\x0ECInstanceBase\xF1 ";
+  p_fldcmts = "\x04\x051.";
+  load_type(ltf, 3071, "CInstance", p_type, "", "", p_fldcmts);
   p_type = "\x0D\x01\x01";
   load_type(ltf, 3072, "CGCGeneration", p_type);
   p_type = "\x0D\x01\x01";
@@ -13717,6 +13718,20 @@ static LocalTypes_13()
   load_type(ltf, 3518, "_Direction", p_type, p_fields);
   p_type = "\x0D\x01\x01";
   load_type(ltf, 3519, "SyncTestBackend::SavedInfo", p_type);
+  p_type = "-\x12\xFE\x80\x01\xE3@AADA\x9F\xFF\xFF\xFF~\x9F\xFF\xFF\xFF~ADAAAAAAA\x8F"
+    "\xFF\xFFp";
+  p_fields = "\x0BVALUE_REAL\x0DVALUE_STRING\x0CVALUE_ARRAY\x0DVALUE_OBJECT\x0CVALUE"
+    "_INT32\x10VALUE_UNDEFINED\x0AVALUE_PTR\x0BVALUE_VEC3\x0BVALUE_VEC4\x0C"
+    "VALUE_VEC44\x0CVALUE_INT64\x0FVALUE_ACCESSOR\x0BVALUE_NULL\x0BVALUE_BO"
+    "OL\x0FVALUE_ITERATOR\x0AVALUE_REF\x0CVALUE_UNSET";
+  p_fldcmts = "\x0BReal value\x0DString value\x0CArray value\x14YYObjectBase* value\x0C"
+    "Int32 value\x10Undefined value\x0APtr value=Deprecated : unused : Vec3"
+    " (x,y,z) value (within the RValue)@Deprecated : unused :Vec4 (x,y,z,w)"
+    " value (allocated from pool)@Deprecated : unused :Vec44 (matrix) value"
+    " (allocated from pool)\x0CInt64 value\x15Actually an accessor\x08JS Nu"
+    "ll\x0BBool value\x13JS For-in Iterator?Reference value (uses the ptr t"
+    "o point at a RefBase structure)";
+  load_type(ltf, 3529, "RValue_consts", p_type, p_fields, "", p_fldcmts);
 }
 
 //------------------------------------------------------------------------
