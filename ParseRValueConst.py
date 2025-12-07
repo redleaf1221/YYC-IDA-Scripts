@@ -41,7 +41,7 @@ def name_r_value(db: Database, value_ea: int, kind: int) -> str:
     elif kind == 13:
         # bool
         name = (f"rv_{r_value_kinds[kind]}_"
-                f"{bool(db.bytes.get_qword_at(value_ea))}_a{hex(value_ea)[2:]}")
+                f"{bool(db.bytes.get_qword_at(value_ea))}_p{hex(value_ea)[2:]}")
     else:
         # any other guy~
         name = f"rv_{r_value_kinds[kind]}_v{db.bytes.get_qword_at(value_ea)}_p{hex(value_ea)[2:]}"
@@ -58,11 +58,11 @@ def main():
         dl_value_type = db.types.get_by_name("DLValue")
         if not r_value_type or not d_value_type or not dl_value_type:
             print("Type not found, run the IDC first.")
-            exit(0)
+            return
         current_ea = db.current_ea
         if not db.is_valid_ea(current_ea):
             print("ea not valid.")
-            exit(0)
+            return
 
         print(f"Setting const type starting from {hex(current_ea)}...")
         while check_is_RValue(db, current_ea):

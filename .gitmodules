@@ -1,0 +1,3 @@
+[submodule "idahunt"]
+	path = idahunt
+	url = https://github.com/nccgroup/idahunt.git

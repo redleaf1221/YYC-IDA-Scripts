@@ -35,11 +35,11 @@ def main():
         yyvar_type = db.types.get_by_name("YYVAR")
         if not yyvar_type or not db.types.get_by_name("YYRValue") or not db.types.get_by_name("YYRValue"):
             print("Type not found, run the IDC first.")
-            exit(0)
+            return
         current_ea = db.current_ea
         if not db.is_valid_ea(current_ea):
             print("ea not valid.")
-            exit(0)
+            return
 
         temp_global_func_type = tinfo_t("YYRValue& temp_func"
                                         " (CInstance *pSelf, CInstance *pOther,"

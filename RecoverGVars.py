@@ -12,11 +12,11 @@ def main():
         yyvar_type = db.types.get_by_name("YYVAR")
         if not yyvar_type:
             print("YYVAR type not found, run the IDC first.")
-            exit(0)
+            return
         current_ea = db.current_ea
         if not db.is_valid_ea(current_ea):
             print("ea not valid.")
-            exit(0)
+            return
 
         print(f"Interpreting array at {hex(current_ea)} as g_Vars...")
         db.names.set_name(current_ea, "?g_Vars@@3PAPEAUYYVAR@@A")
