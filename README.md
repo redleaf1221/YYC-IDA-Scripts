@@ -1,0 +1,1 @@
+Why is making a mod for YYC game so hard😡😡😡. I don't think black-box analysis is possible, don't you need to understand how the game works to modify it? This repo contains serval IDA scripts to recover symbols for YYC games, I'll document how to use them later.
